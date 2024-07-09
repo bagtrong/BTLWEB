@@ -1,0 +1,24 @@
+﻿@using X.PagedList.Mvc.Core;
+@model X.PagedList.IPagedList<TDanhMucSp>
+
+
+
+
+@{
+    ViewData["Title"] = "SanPhamTheoLoai";
+    Layout = "~/Views/Shared/_Layoutorgani.cshtml";
+}
+
+
+
+
+@foreach(var item in Model){
+
+   @await Html.PartialAsync("Sanphampartial",item)
+
+    
+}
+
+<div class="product__pagination">
+    @Html.PagedListPager(Model, page => Url.Action("SanPhamTheoLoai", new{page=page, maloai=ViewBag.maloai}))
+</div>
